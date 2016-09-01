@@ -96,6 +96,9 @@ class RoastTab(QtWidgets.QWidget):
 
             self.sectionBars[openroast.recipes.get_current_step_number()].setValue(value)
 
+        if openroast.roaster.time_remaining <= 1:
+            openroast.recipes.move_to_next_step()
+
         # Check connection status of the openroast.roaster.
         if (openroast.roaster.connected):
             self.connectionStatusLabel.setHidden(True)
